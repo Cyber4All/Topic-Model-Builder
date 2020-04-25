@@ -1,0 +1,15 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      docker: 18
+  post_build:
+    commands:
+      - echo Running Topic Model Builder
+      - docker run -v $(pwd)/models:/model-builder/app/models --env MONGO_DOMAIN=$MONGO_DOMAIN --env ES_DOMAIN=$ES_DOMAIN cyber4all/topic-model-builder python index.py
+artifacts:
+  files:
+    - $(pwd)/models/cnn_classifier.sav
+    - $(pwd)/models/rnn_classifier.sav
+    - $(pwd)/models/bidirectional_rnn_classifier.sav
