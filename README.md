@@ -23,8 +23,11 @@ These files are too large for git to handle (maybe this can be put into a git su
 ## Where is this deployed?
 
 The Topic Model Builder only runs in AWS CodeBuild when the CLARK Topic Service triggers it via HTTPS
-AWS CodeBuild pulls the source code in this repository and follows the instructions that are located in 
-`buildspec.yml`.
+AWS CodeBuild pulls this project's image from Dockerhub and follows the instructions that are located in 
+`buildspec.yml`. Note the `buildspec.yml` saved within the container is not directly read by AWS CodeBuild.
+The same `buildspec.yml` is saved in the CodeBuild configuration on AWS. The file is simplyincluded in this 
+repository for ease of access. If you want to update the `buildspec.yml`, you will need to update it in both 
+places (this git repository AND AWS CodeBuild configuration via CLI or console).
 
 ## Updating This Project
 
