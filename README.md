@@ -31,3 +31,6 @@ AWS CodeBuild pulls the source code in this repository and follows the instructi
 This project does not have a dedicated CI pipeline for building and pushing new image versions
 to Dockerhub. Once the update is made in the source code, you will need to build and push the updated image
 from your machine.
+
+## Running This Project
+This project requires specific dependencies (mainly specific versions of Keras and Tensorflow) to run. Because of this, I recommend running this from within a Docker container. The included Dockerfile contains instructions for building the exact environment needed to run this project. You will notice that the Dockerfile does not have a CMD. You can run the project by passing the CMD "python index.py through a `docker run` command or by running it from within the container itself.
